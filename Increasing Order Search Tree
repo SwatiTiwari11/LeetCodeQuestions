@@ -1,0 +1,34 @@
+class Solution {
+public:
+   void inorderT(TreeNode* root,vector<int>&a)
+    {
+        if(root==NULL)
+        {
+          return;
+        }
+        if(root!=NULL){
+         inorderT(root->left,a)  ;
+        a.push_back(root->val);
+         inorderT(root->right,a); 
+    }
+        
+    }
+   TreeNode* increasingBST(TreeNode* root) {
+    
+        if(root==NULL)
+        {
+            return NULL;
+        }
+        vector<int>a;
+        inorderT(root,a);
+        TreeNode* ans = new TreeNode(-1);
+        TreeNode* curr = ans;
+         for(auto node : a) {
+            curr->right = new TreeNode(node);
+            curr = curr->right;
+        }
+
+        return ans->right;
+  
+    }
+};
