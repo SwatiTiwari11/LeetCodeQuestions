@@ -1,0 +1,13 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        d={}
+        ans=[]
+        for i in nums:
+            if i in d:
+                d[i]=False
+            else:
+                d[i]=True
+        for i in d:
+            if d[i]:
+                ans.append(i)
+        return ans 
